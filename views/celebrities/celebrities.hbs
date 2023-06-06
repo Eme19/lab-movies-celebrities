@@ -2,7 +2,13 @@
 
 <div>
 {{#each celebrities}}
-<p>{{name}}</p>
+
+<h3>{{this.name}}</h3>
+<ul>
+<li>{{this.occupation}}</li>
+<li>{{this.catchPhrase}}</li>
+</ul>
   {{/each}}
+
 </div>
   

@@ -1,24 +1,27 @@
-//  Add your code here
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('strictQuery', false);
-const celebritySchema = new Schema({
-  name:{
+
+
+const movieSchema = new Schema({
+title:{
     type: String,
     required: true,
-  },
+},
 
- occupation: {
+ genre: {
     type: String,
     required: true,  
   },
-catchPhrase:{
+plot:{
     type: String,
     required: true,
-  }
+  },
 
+    cast: [{ type: Schema.Types.ObjectId, ref: "celebrities" }]
+  
 });
 
-const Celebrity = mongoose.model('Celebrities', celebritySchema);
+const Movie = mongoose.model('Movies', movieSchema);
 
-module.exports = Celebrity;
+module.exports = Movie;
