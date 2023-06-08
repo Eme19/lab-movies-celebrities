@@ -72,14 +72,13 @@ router.get('/movies/:id/edit', (req, res, next)=>{
 
 
 router.post("/movies/:id/edit", (req, res) => {
-   console.log(req.params)
+  const {id} = req.params;
  const { title, genre, plot, cast} = req.body;
-  Movie.create({ title, genre, plot, cast})
-  .then(dbPost =>{
- return Movie.findByIdAndUpdate( dbPost);
+ Movie.findByIdAndUpdate(id, { title, genre, plot, cast})
+  .then(()=> {
+   res.redirect('/movies')
   })
-  .then(()=> res.redirect('/movies'))
-  .catch((err) => console.log(`Error while redirecting: ${err}`));
+  .catch((err) => console.log(`Error while redirecting ${err}`));
 });
 
 module.exports = router;

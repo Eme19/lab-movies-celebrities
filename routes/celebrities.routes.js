@@ -51,12 +51,12 @@ router.post("/celebrities/:id/delete", (req, res) =>{
 
 
  router.post('/celebrities/:id/edit', (req, res) => {
+    const {id} = req.params;
     const {name,occupation, catchPhrase} = req.body;
-    Celebrity.findByIdAndUpdate({name, occupation, catchPhrase})
-        .then(updatedcelebrity => {
-            console.log( updatedcelebrity);
-            res.redirect('/celebrity-details')
-
+    Celebrity.findByIdAndUpdate(id, {name, occupation, catchPhrase})
+        .then(()=> {
+            res.redirect('/celebrities')
+           
         })
   .catch((err) => console.log(`Error while redirecting Edit celebrities ${err}`));
 });
