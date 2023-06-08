@@ -1,0 +1,14 @@
+
+<h5>{{celebritydetails.name}}</h5>
+<ol>
+     <li>Occupation: {{celebritydetails.occupation}}</li>
+      <li>catchPhrase: {{celebritydetails.catchPhrase}}</li>
+</ol>
+
+<h6>{{updatecelebrity.name}}</h6>
+
+<form action="/celebrities/{{celebritydetails.id}}/delete" method="post">
+   <button type="submit">Delete</button>
+</form><br>
+
+ <a href='/celebrities/{{celebritydetails.id}}/edit'>Edit</a> <br>

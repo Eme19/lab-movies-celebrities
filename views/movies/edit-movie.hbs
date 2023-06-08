@@ -1,0 +1,22 @@
+<h5>Edited Movies</h5>
+
+<form action='/movies/:id/edit' method="post">
+ <label for="">Title:</label>
+    <input required type="text"  name="title"  placeholder="{{Items.title}}">
+    <br/>
+    <label for="">Genre:</label>
+    <input required type="text" name="genre" placeholder="{{Items.genre}}">
+     <br/>
+    <label for="">Plot:</label>
+    <input required type="text" name="plot"  placeholder="{{Items.plot}}">
+     <br/>
+         <select name="cast">
+         {{#each listDB}}
+      <option value="{{this._id}}">{{this.name}}</option>
+      {{/each}}
+    </select><br>
+   <button type="submit">Submit</button>
+</form>
+
+
+

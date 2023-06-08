@@ -37,7 +37,7 @@ router.get("/movies", (req, res)=> {
    router.get('/movie-details/:movieid', (req, res, next)=> {
       const {movieid} = req.params;
      Movie.findById(movieid)
-       .populate('title cast')
+       .populate('cast')
        .then(foundMovieDB => {
       console.log('movies details', foundMovieDB)
       res.render('movies/movie-details', {movie: foundMovieDB})
@@ -48,5 +48,38 @@ router.get("/movies", (req, res)=> {
    })
 });
 
+router.post("/movies/:id/delete", (req, res) =>{
+   Movie.findByIdAndRemove(req.params.id)
+   .then(()=> res.redirect('/movies'))
+   .catch((err) => console.log(`Error while redirecting`));
+});
+
+
+
+router.get('/movies/:id/edit', (req, res, next)=>{
+
+   let celebrityList
+   Celebrity.find()
+   .then((listDB)=> {
+   celebrityList = listDB
+   })
+   Movie.findById(req.params.id)
+   .populate('cast')
+   .then((currentmovieDB)=>{
+      res.render('movies/edit-movie', {Items: currentmovieDB, listDB: celebrityList})
+   })
+});
+
+
+router.post("/movies/:id/edit", (req, res) => {
+   console.log(req.params)
+ const { title, genre, plot, cast} = req.body;
+  Movie.create({ title, genre, plot, cast})
+  .then(dbPost =>{
+ return Movie.findByIdAndUpdate( dbPost);
+  })
+  .then(()=> res.redirect('/movies'))
+  .catch((err) => console.log(`Error while redirecting: ${err}`));
+});
 
 module.exports = router;

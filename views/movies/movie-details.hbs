@@ -1,10 +1,24 @@
-<h2> Detials about each movie</h2>
+<h5>Movie Detials</h5>
 
-<h3>{{title}}</h3>
-    <p>{{genre}}</p>
-    <p>{{plot}}</p>
+<ol>
+<h2>{{movie.title}}</h2>
+<li>{{movie.genre}}</li>
+<li>{{movie.plot}}</li>
+</ol>
+
 <ul>
 {{#each movie.cast}}
-<li>{{this}}</li>
+<h2>{{this.name}}</h2>
+<li>{{this.occupation}}</li>
+<li>{{this.catchPhrase}}</li>
 {{/each}}
+<form action="/movies/{{movie.id}}/delete" method="post">
+   <button type="submit">Delete</button>
+</form>
 </ul>
+<a href='/movies/'>Back to movies</a>
+<br>
+ <a href='/movies/{{movie.id}}/edit'>Edit</a> <br>
+
+<br>
+ 

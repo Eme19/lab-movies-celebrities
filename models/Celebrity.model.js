@@ -2,6 +2,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('strictQuery', false);
+
+
 const celebritySchema = new Schema({
   name:{
     type: String,
@@ -19,6 +21,6 @@ catchPhrase:{
 
 });
 
-const Celebrity = mongoose.model('Celebrities', celebritySchema);
+const Celebrity = mongoose.model('Celebrity', celebritySchema);
 
 module.exports = Celebrity;

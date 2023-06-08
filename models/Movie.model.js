@@ -18,7 +18,7 @@ plot:{
     required: true,
   },
 
-    cast: [{ type: Schema.Types.ObjectId, ref: "celebrities" }]
+    cast: [{ type: Schema.Types.ObjectId, ref: "Celebrity" }]
   
 });
 
